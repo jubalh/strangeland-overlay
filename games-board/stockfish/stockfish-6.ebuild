@@ -9,8 +9,8 @@ SRC_URI="https://stockfish.s3.amazonaws.com/stockfish-${PV}-src.zip -> ${P}.zip"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE="sse"
+KEYWORDS="*"
+IUSE="sse debug bsfq popcnt pext prefetch"
 
 RDEPEND=""
 DEPEND="app-arch/unzip"
@@ -19,9 +19,10 @@ S="${WORKDIR}/stockfish-${PV}-src/src"
 
 src_compile() {
 	emake CXX="$(tc-getCXX)" CXXFLAGS="${CXXFLAGS}" \
-		arch=any os=any bits=$(usex amd64 "64" "32") \
-		bsfq=no popcnt=no \
+		arch=any bits=$(usex amd64 "64" "32") \
+		bsfq=$(usex bsfq "yes" "no") popcnt=$(usex popcnt "yes" "no") \
 		prefetch=$(usex sse "yes" "no") sse=$(usex sse "yes" "no") \
+		debug=$(usex debug "yes" "no") pext=$(usex pext "yes" "no") \
 		all
 }
 
@@ -32,10 +33,10 @@ src_install() {
 
 pkg_postinst() {
 	elog
-	elog "Note: The opening book hasn't been installed. If you want it, just"
-	elog "      download it from ${HOMEPAGE}."
-	elog "      In most cases you take now your xboard compatible application,"
-	elog "      (xboard, eboard, knights) and just play chess against computer"
-	elog "      opponent. Have fun."
+	elog "Stockfish is just a chess engine, which means, if you want to play against it,"
+	elog "      you need to install a UCI/XBoard compatible user interface like XBoard, eboard or knights."
+	elog "      Go ahead and install one."
+	elog "      If you would like to have the stockfish opening book, look for it on ${HOMEPAGE}."
+	elog "      However it does not get updated anymore it's still suitable for existing openings."
 	elog
 }

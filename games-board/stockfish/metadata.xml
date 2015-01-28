@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>g.bluehut@gmail.com</email>
+		<name>Michael Vetter</name>
+	</maintainer>
+	<longdescription lang="en">
+		Stockfish is the strongest chess engine in the world. It is also much stronger than the best human chess grandmasters.
+	</longdescription>
+	<use>
+		<flag name="bsfq">Use bsfq x86_64 asm instruction (only with GC and ICC 64-bit)</flag>
+		<flag name="prefetch">Use prefetch x86_64 asm instruction (only with GC and ICC 64-bit)</flag>
+		<flag name="pext">Use pext x86_64 asm instruction</flag>
+		<flag name="popcnt">Use popcnt x86_64 asm instruction</flag>
+	</use>
+</pkgmetadata>
