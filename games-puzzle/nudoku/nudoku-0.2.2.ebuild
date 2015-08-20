@@ -22,5 +22,5 @@ src_prepare() {
 
 src_install() {
 	dobin ${WORKDIR}/${P}/src/${PN}
-	dodoc ${WORKDIR}/${P}/${PN}.1
+	doman ${WORKDIR}/${P}/${PN}.1
 }
