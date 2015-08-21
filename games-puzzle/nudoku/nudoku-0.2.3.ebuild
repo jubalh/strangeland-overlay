@@ -8,7 +8,7 @@ SLOT="0"
 
 DESCRIPTION="ncurses based sudoku game."
 HOMEPAGE="http://jubalh.github.io/nudoku"
-SRC_URI="https://github.com/jubalh/${PN}/archive/${PV}.tar.gz"
+SRC_URI="https://github.com/jubalh/${PN}/releases/download/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-3"
 KEYWORDS="*"
@@ -22,5 +22,5 @@ src_prepare() {
 
 src_install() {
 	dobin ${WORKDIR}/${P}/src/${PN}
-	doman ${WORKDIR}/${P}/${PN}.1
+	doman ${WORKDIR}/${P}/man/${PN}.1
 }
